@@ -1,20 +1,33 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { ComponentType, useState } from 'react';
 import { Shield, Bug, ShieldAlert, Video, Terminal, ShieldCheck } from 'lucide-react';
-import dynamic from 'next/dynamic';
+import { TerminalPlayground } from '../lib/terminal/Terminal';
+// import dynamic from 'next/dynamic';
 
-const TerminalProps = dynamic(
-  () => import('../lib/terminal/Terminal').then((mod) => mod.Terminal),
-  { ssr: false }
-);
+// const TerminalProps = dynamic(
+//   () => import('../lib/terminal/Terminal').then((mod) => mod.Terminal),
+//   { ssr: false }
+// );
+
 
 
 interface CourseContentProps {
   currentChapter: number;
 }
 
-const chapters = [
+interface Chapter {
+  title: string;
+  icon: ComponentType<{ className?: string; size?: number }>;
+  content: string;
+  videoUrl: string;
+  commands?: {
+    whoami: string;
+  };
+  terminalCommands?: object
+}
+
+const chapters : Chapter[] = [
   {
     title: 'Understanding Cybersecurity Basics',
     icon: Shield,
@@ -31,11 +44,7 @@ const chapters = [
       </ul>
     `,
     videoUrl: 'https://www.youtube.com/embed/Otq0LY90Qso',
-    terminalCommands: [
-      'nmap -sV localhost',
-      'netstat -an',
-      'ping example.com'
-    ]
+    commands:  {whoami: "jackharper"}
   },
   {
     title: 'Common Security Threats',
@@ -57,8 +66,8 @@ const chapters = [
       'wireshark',
       'tcpdump -i any',
       'ps aux | grep suspicious'
-    ]
-    
+    ],
+    commands:  {whoami: "common yber"}
   },
   {
     title: 'Basic Security Practices',
@@ -214,10 +223,14 @@ function CourseContent({ currentChapter }: CourseContentProps) {
       )}
 
       {showTerminal && (
-        <div className="mb-6 bg-gray-900 text-green-400 p-4 rounded-lg font-mono">
-          <TerminalProps/>
+        <div className="mb-6 bg-gray-900 h-[400px] text-green-400 p-4 rounded-lg font-mono">
+          <TerminalPlayground commands={chapters[0]?.commands || {}}/>
         </div>
       )}
+
+
+
+               
       
       <div 
         className="prose max-w-none text-gray-700"

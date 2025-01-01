@@ -5,11 +5,13 @@ import Sidebar from '@/components/Sidebard';
 import CourseContent from '@/components/CourseContent';
 import Navbar from '@/components/NavBar';
 import Footer from '@/components/footer/Footer';
+import { TerminalContextProvider } from 'react-terminal';
 
 function App() {
   const [currentChapter, setCurrentChapter] = useState(0);
 
   return (
+     <TerminalContextProvider>
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <div className="flex ">
@@ -64,6 +66,7 @@ function App() {
     </div>
     <Footer/>
     </div>
+    </TerminalContextProvider>
   );
 }
 
