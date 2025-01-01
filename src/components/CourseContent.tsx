@@ -27,6 +27,8 @@ interface Chapter {
   terminalCommands?: object
 }
 
+
+
 const chapters : Chapter[] = [
   {
     title: 'Understanding Cybersecurity Basics',
@@ -224,14 +226,10 @@ function CourseContent({ currentChapter }: CourseContentProps) {
 
       {showTerminal && (
         <div className="mb-6 bg-gray-900 h-[400px] text-green-400 p-4 rounded-lg font-mono">
-          <TerminalPlayground commands={chapters[0]?.commands || {}}/>
+          <TerminalPlayground commands={chapters[currentChapter]?.commands || {}}/>
         </div>
       )}
-
-
-
-               
-      
+  
       <div 
         className="prose max-w-none text-gray-700"
         dangerouslySetInnerHTML={{ __html: chapter.content }}
