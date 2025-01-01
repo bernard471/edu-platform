@@ -3,6 +3,7 @@
 import React, { ComponentType, useState } from 'react';
 import { Shield, Bug, ShieldAlert, Video, Terminal, ShieldCheck } from 'lucide-react';
 import { TerminalPlayground } from '../lib/terminal/Terminal';
+import { echo, help, whoami } from './data/commands';
 // import dynamic from 'next/dynamic';
 
 // const TerminalProps = dynamic(
@@ -21,9 +22,7 @@ interface Chapter {
   icon: ComponentType<{ className?: string; size?: number }>;
   content: string;
   videoUrl: string;
-  commands?: {
-    whoami: string;
-  };
+  commands?: object
   terminalCommands?: object
 }
 
@@ -46,7 +45,7 @@ const chapters : Chapter[] = [
       </ul>
     `,
     videoUrl: 'https://www.youtube.com/embed/Otq0LY90Qso',
-    commands:  {whoami: "jackharper"}
+    commands:  {whoami, echo, help}
   },
   {
     title: 'Common Security Threats',
