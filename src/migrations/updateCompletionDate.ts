@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import User from "@/models/userModel";
 
 // MongoDB connection string
-const MONGODB_URI = 'mongodb+srv://eduplatform:Sabolaigh1@cluster0.yzlik.mongodb.net/';
+const MONGODB_URI = process.env.MONGODB_URI as string;
 
 const updateCompletionDates = async (): Promise<void> => {
   try {
