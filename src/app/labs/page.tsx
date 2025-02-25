@@ -12,6 +12,11 @@ import { Lab, LabDifficulty, SortOption } from '../../types/lab';
 import { labs } from '../../data/labs';
 import Navbar from '@/components/NavBar';
 import Footer from '@/components/footer/Footer';
+import Image1 from "@/images/sch8.jpeg";
+import Image from "next/image";
+import { motion } from 'framer-motion';
+
+
 
 const LabsPage: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -23,18 +28,38 @@ const LabsPage: React.FC = () => {
   const sortedLabs = sortLabs(filteredLabs, sortOption);
 
   return (
-    <section className="min-h-screen bg-gray-200 pt-20">
+    <div className="min-h-screen bg-white">
       <Navbar />
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-black">Practical Labs</h2>
-          <p className="mt-4 text-gray-900 max-w-2xl mx-auto">
-            Put your skills to the test with our hands-on cybersecurity labs.
-            Practice in real-world scenarios and earn points.
-          </p>
-        </div>
+      <div className="mx-auto ">
+      <section className="relative px-4 py-28 mb-10 mx-auto bg-slate-900 max-w-full">
+  <div className="absolute inset-0 overflow-hidden">
+    <Image 
+      src={Image1}
+      alt="Hero background"
+      className="object-cover w-full h-full"
+    />
+    <div className="absolute inset-0 bg-gray-900/80"></div>
+  </div>
+  <div className="relative z-10">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="text-center text-white max-w-3xl mx-auto"
+    >
+      <h1 className="text-5xl md:text-7xl font-bold text-blue-200 to-purple-200 mb-6">
+        Practical Labs
+      </h1>
+      <p className="text-xl mt-4 leading-relaxed">
+        Master cybersecurity through hands-on experience. 
+        Put your skills to the test with real-world scenarios and earn recognition.
+      </p>
+    </motion.div>
+  </div>
+</section>
 
-        <div className="flex flex-col md:flex-row gap-8">
+
+        <div className="flex flex-col mb-8 p-8 md:flex-row gap-8">
           <LabFilters
             selectedDifficulties={selectedDifficulties}
             onDifficultyChange={setSelectedDifficulties}
@@ -77,7 +102,7 @@ const LabsPage: React.FC = () => {
         />
       )}
        <Footer />
-    </section>
+    </div>
   );
 };
 export default LabsPage;

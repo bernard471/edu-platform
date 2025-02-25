@@ -13,9 +13,9 @@ const Navbar = () => {
   const menuItems = [
     { id: 'courses', label: 'Courses', path: '/courses' },
     { id: 'labs', label: 'Labs', path: '/labs' },
-    { id: 'mentorship', label: 'Mentorship', path: '/mentorship' },
-    { id: 'community', label: 'Community', path: '/community' },
-    { id: 'blog', label: 'Blog', path: '/blog' }
+    { id: 'about-us', label: 'About Us', path: '/about-us' },
+    { id: 'help-center', label: 'Help Center', path: '/help-center' },
+    { id: 'contact-us', label: 'Contact Us', path: '/contact-us' },
   ];
 
  
@@ -47,9 +47,9 @@ const Navbar = () => {
 
           <div className="flex items-center space-x-4">
           <Link
-              href="/auth"
+              href="/signup"
               className={`hidden md:flex items-center space-x-2 px-4 py-2 rounded-lg ${
-                pathname === '/auth'
+                pathname === '/signup'
                   ? 'bg-cyan-700 text-white'
                   : 'bg-cyan-600 hover:bg-cyan-700'
               } transition-colors`}
@@ -83,9 +83,9 @@ const Navbar = () => {
               </Link>
             ))}
             <Link
-              href="/auth"
+              href="/signup"
               className={`flex items-center space-x-2 px-4 py-2 rounded-lg w-full ${
-                pathname === '/auth'
+                pathname === '/signup'
                   ? 'bg-cyan-700 text-white'
                   : 'bg-cyan-600 hover:bg-cyan-700'
               } transition-colors`}

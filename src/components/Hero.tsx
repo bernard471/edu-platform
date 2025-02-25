@@ -25,7 +25,7 @@ const Hero = () => {
           <div className="flex-1 space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyan-600/20 text-cyan-400 text-sm">
               <Shield className="w-4 h-4" />
-              Trusted by 10,000+ cybersecurity professionals
+              Trusted by 1,000+ cybersecurity professionals
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">

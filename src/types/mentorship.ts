@@ -15,20 +15,19 @@ export type MentorshipStatus = 'pending' | 'active' | 'completed' | 'cancelled';
 
 export interface Mentor {
   id: string;
-  userId: string;
+  user: {
+    display_name: string;
+    avatar_url: string;
+  };
   expertise: MentorExpertise[];
   yearsOfExperience: number;
   bio: string;
   hourlyRate: number;
-  availability: string[];
   rating: number;
   totalSessions: number;
   isVerified: boolean;
-  user?: {
-    display_name: string;
-    avatar_url: string;
-  };
 }
+
 
 export interface MentorshipSession {
   id: string;

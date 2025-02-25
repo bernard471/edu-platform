@@ -22,7 +22,7 @@ const LabFilters: React.FC<LabFiltersProps> = ({
   };
 
   return (
-    <div className="w-full md:w-64 bg-white rounded-lg shadow-sm p-6">
+    <div className="w-full md:w-64 bg-gray-100 rounded-lg shadow-sm p-6">
       <div className="flex items-center gap-2 mb-6">
         <Filter className="w-5 h-5 text-gray-500" />
         <h2 className="text-lg text-gray-500 font-semibold">Filters</h2>

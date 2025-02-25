@@ -7,10 +7,12 @@ import CourseCatalog from "./courses/CourseCatalog";
 import FeaturedLabs from "@/components/home/FeaturedLabs";
 import Footer from "@/components/footer/Footer";
 import { TerminalContextProvider } from "react-terminal";
+import {SessionProvider} from "next-auth/react"
 
 export default function Home() {
   return (
     <main>
+      <SessionProvider>
       <TerminalContextProvider>
         <Navbar />
         <Hero />
@@ -18,8 +20,8 @@ export default function Home() {
         <CourseCatalog />
         <FeaturedLabs />
         <Footer />
-        
       </TerminalContextProvider>
+      </SessionProvider>
     </main>
   );
 }

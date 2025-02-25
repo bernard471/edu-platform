@@ -12,29 +12,18 @@ const sections: FooterSection[] = [
   {
     title: 'Platform',
     links: [
-      { label: 'Courses', href: '#courses' },
-      { label: 'Labs', href: '#labs' },
-      { label: 'Community', href: '#community' },
-      { label: 'Blog', href: '#blog' },
-      { label: 'Certification', href: '#certification' }
+      { label: 'Courses', href: '/courses' },
+      { label: 'Labs', href: '/labs' },
+      { label: 'Blog', href: '/blog' },
     ]
   },
-  {
-    title: 'Company',
-    links: [
-      { label: 'About Us', href: '#about' },
-      { label: 'Careers', href: '#careers' },
-      { label: 'Partners', href: '#partners' },
-      { label: 'Contact', href: '#contact' }
-    ]
-  },
+   
   {
     title: 'Resources',
     links: [
-      { label: 'Documentation', href: '#docs' },
-      { label: 'Help Center', href: '#help' },
-      { label: 'Learning Paths', href: '#paths' },
-      { label: 'Newsletter', href: '#newsletter' }
+      { label: 'About Us', href: '/about-us' },
+      { label: 'Help Center', href: '/help-center' },
+      { label: 'Contact', href: 'contact-us' },
     ]
   },
   {
@@ -42,15 +31,13 @@ const sections: FooterSection[] = [
     links: [
       { label: 'Privacy Policy', href: '#privacy' },
       { label: 'Terms of Service', href: '#terms' },
-      { label: 'Cookie Policy', href: '#cookies' },
-      { label: 'Security', href: '#security' }
     ]
   }
 ];
 
 const FooterLinks: React.FC = () => {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
       {sections.map((section) => (
         <div key={section.title}>
           <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">

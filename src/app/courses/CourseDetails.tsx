@@ -4,6 +4,8 @@ import React from 'react';
 import { Clock, BookOpen, Award, X } from 'lucide-react';
 import { Course } from '../../types/course';
 import  Link from 'next/link';
+import Image from 'next/image';
+
 
 
 interface CourseDetailsProps {
@@ -16,9 +18,11 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ course, onClose }) => {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto">
         <div className="relative">
-          <img 
+          <Image
             src={course.image} 
             alt={course.title}
+            width={800}
+            height={400}
             className="w-full h-48 object-cover rounded-t-xl"
           />
           <button
@@ -30,7 +34,7 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ course, onClose }) => {
         </div>
 
         <div className="p-6">
-          <div className="mb-6">
+          <div className="mb-6 flex items-center justify-between">
             <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium 
               ${course.level === 'Beginner' ? 'bg-green-100 text-green-800' :
                 course.level === 'Intermediate' ? 'bg-blue-100 text-blue-800' :
@@ -38,6 +42,10 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ course, onClose }) => {
             >
               {course.level}
             </span>
+
+            <div className="mb-6">
+            <span className="text-2xl font-bold text-cyan-600">${course.price.toFixed(2)}</span>
+          </div>
           </div>
 
           <h2 className="text-2xl text-gray-600 font-bold mb-4">{course.title}</h2>
@@ -76,14 +84,15 @@ const CourseDetails: React.FC<CourseDetailsProps> = ({ course, onClose }) => {
             </div>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-8 flex gap-4">
           <Link 
-              href="/CourseStudy"
-              className="block w-full bg-cyan-600 text-white py-3 rounded-lg font-semibold hover:bg-cyan-700 transition-colors text-center"
-            >
-              Start Learning
-            </Link>
-          </div>
+            href={`/coursecheckout/${course.id}`}
+            className="flex-1 bg-cyan-600 text-white py-3 rounded-lg font-semibold hover:bg-cyan-700 transition-colors text-center"
+          >
+            Enroll Now - ${course.price.toFixed(2)}
+          </Link>
+        </div>
+
         </div>
       </div>
     </div>

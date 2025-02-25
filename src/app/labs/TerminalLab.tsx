@@ -1,28 +1,17 @@
-import dynamic from 'next/dynamic';
+
 import React, { useState } from 'react';
 import type { Lab } from '@/types/lab';
 
-// Dynamically import Terminal component
-const Terminal = dynamic(
-  () => import('../../lib/terminal/Terminal').then((mod) => mod.Terminal),
-  { ssr: false }
-);
+
+
 
 interface TerminalLabProps {
   lab: Lab;
   onComplete: (success: boolean) => void;
 }
 
-export const TerminalLab: React.FC<TerminalLabProps> = ({ lab, onComplete }) => {
-  const [commandHistory, setCommandHistory] = useState<string[]>([]);
-
-  const handleCommand = (command: string) => {
-    setCommandHistory(prev => [...prev, command]);
-    
-    if (lab.validation && typeof lab.validation === 'object' && 'command' in lab.validation && lab.validation.command === command) {
-      onComplete(true);
-    }
-  };
+export const TerminalLab: React.FC<TerminalLabProps> = ({ lab }) => {
+  const [] = useState<string[]>([]);
 
   return (
     <div className="h-screen bg-slate-900 p-4">
@@ -46,10 +35,7 @@ export const TerminalLab: React.FC<TerminalLabProps> = ({ lab, onComplete }) => 
           </div>
         </div>
 
-        <Terminal 
-          onCommand={handleCommand}
-          className="h-[calc(100vh-200px)]"
-        />
+        
       </div>
     </div>
   );

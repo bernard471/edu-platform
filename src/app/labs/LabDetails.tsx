@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Clock, Terminal, Trophy } from 'lucide-react';
 import type { Lab } from '@/types/lab';
 import { TerminalLab } from './TerminalLab';
+import { useRouter } from 'next/navigation';
+
 
 interface LabDetailsProps {
   lab: Lab;
@@ -9,8 +11,8 @@ interface LabDetailsProps {
 }
 
 const LabDetails: React.FC<LabDetailsProps> = ({ lab, onClose }) => {
-  const [isLabStarted, setIsLabStarted] = useState(false);
-
+  const [isLabStarted] = useState(false);
+  const router = useRouter();
   const handleLabComplete = (success: boolean) => {
     // Handle lab completion logic here
     if (success) {
@@ -23,7 +25,7 @@ const LabDetails: React.FC<LabDetailsProps> = ({ lab, onClose }) => {
   }
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-gray-200 rounded-xl max-w-2xl w-full">
+      <div className="bg-white rounded-xl max-w-2xl w-full">
         <div className="p-6">
           <div className="flex justify-between items-start mb-6">
             <div>
@@ -77,7 +79,7 @@ const LabDetails: React.FC<LabDetailsProps> = ({ lab, onClose }) => {
                 {lab.tools.map((tool, index) => (
                   <span
                     key={index}
-                    className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                    className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm mb-4"
                   >
                     {tool}
                   </span>
@@ -87,11 +89,12 @@ const LabDetails: React.FC<LabDetailsProps> = ({ lab, onClose }) => {
           </div>
 
           <button 
-          className="w-full bg-cyan-600 text-white py-3 rounded-lg font-semibold hover:bg-cyan-700 transition-colors"
-          onClick={() => setIsLabStarted(true)}
-        >
-          Start Lab
-        </button>
+            className="w-full bg-cyan-600 text-white py-3 rounded-lg font-semibold hover:bg-cyan-700 transition-colors"
+            onClick={() => router.push('/login')}
+          >
+            Start Lab
+          </button>
+
           </div>
         </div>
       </div>

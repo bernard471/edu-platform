@@ -2,51 +2,42 @@
 
 import React from 'react';
 import { ReactTerminal } from "react-terminal";
+import * as commands from '../../components/coursedata/commands';
 
-type TerminalPlaygroundProps = {
-  commands: object
-};
-
-
-export const TerminalPlayground =
- (commands : TerminalPlaygroundProps) => {
- 
-//  const commands = {
-//     whoami: "jackharper",
-//     cd: (directory : unknown) => `changed path to ${directory}`, 
-//     help: `
-//       Available commands:
-//       - whoami: Displays the current user.
-//       - cd <directory>: Changes the directory.
-//       - date: Displays the current date and time.
-//       - clear: Clears the terminal (ReactTerminal handles this by default).
-//       - echo <message>: Echoes back the provided message.
-//       - add <num1> <num2>: Adds two numbers and returns the result.
-//     `,
-//     date: () => new Date().toString(), 
-//     echo: (message: string) => message, 
-//     add: (args: string = "") => {
-//       const [num1, num2] = args.split(" ");
-//       const parsedNum1 = Number(num1);
-//       const parsedNum2 = Number(num2);
-
-//       if (isNaN(parsedNum1) || isNaN(parsedNum2)) {
-//         return "Error: Both arguments must be valid numbers.";
-//       }
-
-//       return `The result is ${parsedNum1 + parsedNum2}`;
-//     },
-//   };
-
-console.log(typeof commands.commands, 'these are the commands', commands.commands)
-
+export const TerminalPlayground = () => {
   return (
-   
-    <ReactTerminal
-      commands={commands.commands}   
-    />
-  
+    <div className="terminal-container" style={{
+      width: '100%',
+      height: '500px',
+      borderRadius: '8px',
+      overflow: 'hidden',
+      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)'
+    }}>
+      <div className="terminal-header" style={{
+        background: '#2d2d2d',
+        padding: '8px',
+        display: 'flex',
+        gap: '6px'
+      }}>
+        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ff5f56' }}></div>
+        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#ffbd2e' }}></div>
+        <div style={{ width: '12px', height: '12px', borderRadius: '50%', background: '#27c93f' }}></div>
+      </div>
+      <ReactTerminal
+        commands={commands}
+        theme={{
+          background: '#1e1e1e',
+          promptSymbolColor: '#27c93f',
+          commandColor: '#fff',
+          outputColor: '#fff',
+          errorOutputColor: '#ff5f56',
+          fontSize: '14px',
+          spacing: '1.5',
+          fontFamily: 'monospace'
+        }}
+        welcomeMessage="Welcome to DK CYBER Terminal. Type 'help' for available commands."
+        promptSymbol="dkcyber@terminal:~$"
+      />
+    </div>
   );
 };
-
-

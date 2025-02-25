@@ -1,10 +1,11 @@
 import React from 'react';
 import { BookOpen, Clock, Award } from 'lucide-react';
 import { Course } from '@/types/course';
+import Image from 'next/image';
 
-type CourseCardProps = Pick<Course, 'title' | 'description' | 'level' | 'duration' | 'image'>;
+type CourseCardProps = Pick<Course, 'title' | 'description' | 'level' | 'duration' | 'image' | 'price'>;
 
-const CourseCard: React.FC<CourseCardProps> = ({ title, description, level, duration, image }) => {
+const CourseCard: React.FC<CourseCardProps> = ({ title, description, level, duration, image, price }) => {
   const levelColors = {
     Beginner: 'bg-green-100 text-green-800',
     Intermediate: 'bg-blue-100 text-blue-800',
@@ -13,11 +14,16 @@ const CourseCard: React.FC<CourseCardProps> = ({ title, description, level, dura
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-      <img src={image} alt={title} className="w-full h-48 object-cover" width={400} height={192} />
+      <Image src={image} alt={title} className="w-full h-48 object-cover" width={400} height={192} />
       <div className="p-6">
+        <div className="flex items-center justify-between mb-2">
         <span className={`inline-block px-3 py-1 rounded-full text-sm font-medium ${levelColors[level]}`}>
           {level}
         </span>
+        <div className="text-xl font-bold text-blue-600">
+            ${price.toFixed(2)}
+          </div>
+          </div>
         <h3 className="mt-4 text-xl font-semibold text-gray-900">{title}</h3>
         <p className="mt-2 text-gray-600 line-clamp-2">{description}</p>
         <div className="mt-4 flex items-center gap-4 text-gray-500">

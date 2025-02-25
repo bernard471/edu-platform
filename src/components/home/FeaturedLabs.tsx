@@ -2,7 +2,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import LabCard from '../../app/labs/LabCard';
-import { labs } from '@/data/lab';
+import { labs } from '@/data/labs';
 
 const FeaturedLabs: React.FC = () => {
   const featuredLabs = labs.slice(0, 3);
